@@ -1,6 +1,3 @@
-from configparser import SectionProxy
-from multiprocessing.sharedctypes import Value
-from readline import set_completion_display_matches_hook
 import time
 import os
 import string
@@ -71,7 +68,11 @@ class WordleSolver():
                                     try:
                                         letter_list.remove(k)
                                     except ValueError:
-                                        pass                    
+                                        pass  
+                        elif state == 'present':
+                            v['state'] = state
+                            v['position'] = iteration
+                            v['duplicate'] = True                
                     break
 
     def update_character_lists(self):
@@ -88,6 +89,13 @@ class WordleSolver():
             elif v['state'] == 'present':
                 if k not in self.required_letters:
                     self.required_letters.append(k)
+                if v['duplicate']:
+                    i = 0
+                    for rl in self.required_letters:
+                        if rl == k:
+                            i += 1
+                    if i < 2:
+                        self.required_letters.append(k)
                 num = v['position']
                 try:
                     self.letter_lists[num].remove(k)
@@ -112,22 +120,10 @@ class WordleSolver():
         """Take the word list and remove words that dont meet the criteria"""
         words_to_remove = []
         for word in self.word_list:
-            if word[0] in self.first_tile_characters:
-                if word[1] in self.second_tile_characters:
-                    if word[2] in self.third_tile_characters:
-                        if word[3] in self.fourth_tile_characters:
-                            if word[4] in self.fifth_tile_characters:
-                                break
-                            else:
-                                words_to_remove.append(word)
-                        else:
-                            words_to_remove.append(word)
-                    else: 
-                        words_to_remove.append(word)
-                else:
+            for n in range(0,5):
+                if word[n] not in self.letter_lists[n]:
                     words_to_remove.append(word)
-            else:
-                words_to_remove.append(word)
+                    break
 
         for potential_guess in self.word_list:
             for dead_letter in self.dead_letters:
