@@ -1,9 +1,7 @@
-from concurrent.futures import thread
 import time
 import os
 import string
 
-from nltk.corpus import words
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -23,11 +21,11 @@ class WordleSolver():
         self.required_letters = []
         self.dead_letters = []
         self.word_list = []
-        raw_words_list = words.words()
-        for word in raw_words_list:
-            if len(word) == 5:
+        with open('wordlist.txt', 'r') as file:
+            lines = file.readlines()        
+            for line in lines:
+                word = line.replace('\n', '')
                 self.word_list.append(word)
-        
 
     def send_first_guess(self):
         b = self.driver
