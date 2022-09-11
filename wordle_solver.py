@@ -1,3 +1,4 @@
+from concurrent.futures import thread
 import time
 import os
 import string
@@ -109,10 +110,7 @@ class WordleSolver():
                         remove_chars.append(letter)
                 for remove_char in remove_chars:
                     if remove_char in self.letter_lists[position]:
-                        self.letter_lists[position].remove(remove_char)
-                            
-
-                            
+                        self.letter_lists[position].remove(remove_char)                          
             else:
                 pass
 
@@ -149,20 +147,22 @@ class WordleSolver():
             element.send_keys(Keys.RETURN)
             tiles = b.find_elements(By.CLASS_NAME,"Tile-module_tile__3ayIZ")
             second_tiles = tiles[start_tile:end_tile]
+            time.sleep(1)
             if second_tiles[0].get_attribute('data-state') != 'tbd':
-                time.sleep(4)
+                while second_tiles[4].get_attribute('data-state') == 'tbd':
+                    time.sleep(1)
                 break
             else:
                 time.sleep(1)
                 for i in range(0,5):
                     element.send_keys(Keys.BACKSPACE)
                 
-
-    def check_for_win(self):
+    def check_for_win(self, start_tile, end_tile):
         b = self.driver
         counter = 0
         tiles = b.find_elements(By.CLASS_NAME,"Tile-module_tile__3ayIZ")
-        for tile in tiles:
+        tile_checker = tiles[start_tile:end_tile]
+        for tile in tile_checker:
             if tile.get_attribute('data-state') == 'correct':
                 counter += 1
         return counter
@@ -180,9 +180,12 @@ while True:
     ws.update_character_lists()
     ws.build_guess_list()
     ws.try_next_guess(first_tile, second_tile)
-    win = ws.check_for_win()
+    win = ws.check_for_win(first_tile, second_tile)
     if win == 5:
+        print("Win")
         break
+    else:
+        print("Fail")
 
 
 
