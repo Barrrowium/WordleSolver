@@ -1,6 +1,7 @@
 import time
 import os
 import string
+from turtle import title
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -45,72 +46,48 @@ class WordleSolver():
         """Grabs a set of tiles and looks at the result"""
         tiles = self.driver.find_elements(By.CLASS_NAME,"Tile-module_tile__3ayIZ")
         first_tiles = tiles[first_tile:last_tile]
+        test_dict = {'correct':[],
+                        'present':[],
+                        'absent':[],}
         for iteration, tile in enumerate(first_tiles):
             state = tile.get_attribute('data-state')
-            text_entered = tile.text
-            for k, v in word_dict.items():
-                if text_entered.lower() == k:
-                    if v['state'] == '':
-                        v['state'] = state
-                        if state != 'absent':
-                            v['position'] = iteration
-                    elif v['state'] == 'present':
-                        if state == 'correct':
-                            v['state'] = state
-                            v['position'] = iteration
-                        elif state == 'present':
-                            v['position'] = iteration
-                    elif v['state'] == 'correct':
-                        if state == 'absent':
-                            for number, letter_list in enumerate(self.letter_lists):
-                                if number != v['position']:
-                                    try:
-                                        letter_list.remove(k)
-                                    except ValueError:
-                                        pass  
-                        elif state == 'present':
-                            v['state'] = state
-                            v['position'] = iteration
-                            v['duplicate'] = True                
-                    break
+            text_entered = tile.text.lower()
+            for k, v in test_dict.items():
+                if k == state:
+                    tile_info = {'letter': text_entered, 'iteration': iteration}
+                    v.append(tile_info)
 
-    def update_character_lists(self):
-        """Takes an uodated word dict and updates character lists"""
-        for k, v in word_dict.items():
-            if v['state'] == 'absent':
-                if k not in self.dead_letters:
-                    self.dead_letters.append(k)
-                for letter_list in self.letter_lists:
+        for k, v in test_dict.items():
+            if k == 'correct':
+                for info in v:
+                    target_list = self.letter_lists[info['iteration']]
+                    remove_chars = []
+                    if len(target_list) != 1:
+                        for letter in target_list:
+                            if letter != info['letter']:
+                                remove_chars.append(letter)
+                        for char in remove_chars:
+                            if char in target_list:
+                                target_list.remove(char)
+                    else:
+                        pass
+
+            if k == 'present':
+                for info in v:
+                    target_list = self.letter_lists[info['iteration']]
                     try:
-                        letter_list.remove(k)
+                        target_list.remove(info['letter'])
                     except ValueError:
                         pass
-            elif v['state'] == 'present':
-                if k not in self.required_letters:
-                    self.required_letters.append(k)
-                if v['duplicate']:
-                    i = 0
-                    for rl in self.required_letters:
-                        if rl == k:
-                            i += 1
-                    if i < 2:
-                        self.required_letters.append(k)
-                num = v['position']
-                try:
-                    self.letter_lists[num].remove(k)
-                except ValueError:
-                    pass
-            elif v['state'] == 'correct':
-                remove_chars = []
-                position = v['position']
-                for letter in self.letter_lists[position]:
-                    if letter != k:
-                        remove_chars.append(letter)
-                for remove_char in remove_chars:
-                    if remove_char in self.letter_lists[position]:
-                        self.letter_lists[position].remove(remove_char)                          
-            else:
-                pass
+                    else:
+                        self.required_letters.append(v['letter'])
+            
+            if k == 'absent':
+                for info in v:
+                    for list in self.letter_lists:
+                        if len(list) != 1:
+                            list.remove(info['letter'])
+
 
     def build_guess_list(self):
         """Take the word list and remove words that dont meet the criteria"""
@@ -165,6 +142,16 @@ class WordleSolver():
                 counter += 1
         return counter
 
+    def print_winning_word(self, start_tile,end_tile):
+        b = self.driver
+        tiles = b.find_elements(By.CLASS_NAME,"Tile-module_tile__3ayIZ")
+        tile_checker = tiles[start_tile:end_tile]
+        winning_word = []
+        for tile in tile_checker:
+            winning_word.append(tile.text.lower())
+        print('The winning word was:\n')
+        print(''.join(winning_word))
+
 
 first_tile = 0
 second_tile = 5
@@ -175,12 +162,12 @@ while True:
     ws.process_guess(first_tile, second_tile)
     first_tile += 5
     second_tile +=5
-    ws.update_character_lists()
     ws.build_guess_list()
     ws.try_next_guess(first_tile, second_tile)
     win = ws.check_for_win(first_tile, second_tile)
     if win == 5:
         print("Win")
+        ws.print_winning_word(first_tile, second_tile)
         break
     else:
         print("Fail")
