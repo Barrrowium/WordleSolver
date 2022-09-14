@@ -1,12 +1,12 @@
+from multiprocessing.sharedctypes import Value
 import time
 import os
 import string
-from turtle import title
+
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from constants import word_dict
 
 
 class WordleSolver():
@@ -80,13 +80,16 @@ class WordleSolver():
                     except ValueError:
                         pass
                     else:
-                        self.required_letters.append(v['letter'])
+                        self.required_letters.append(info['letter'])
             
             if k == 'absent':
                 for info in v:
-                    for list in self.letter_lists:
-                        if len(list) != 1:
-                            list.remove(info['letter'])
+                    for ll in self.letter_lists:
+                        if len(ll) != 1:
+                            try:
+                                ll.remove(info['letter'])
+                            except ValueError:
+                                pass
 
 
     def build_guess_list(self):
@@ -149,7 +152,7 @@ class WordleSolver():
         winning_word = []
         for tile in tile_checker:
             winning_word.append(tile.text.lower())
-        print('The winning word was:\n')
+        print('The winning word was:')
         print(''.join(winning_word))
 
 
@@ -171,6 +174,3 @@ while True:
         break
     else:
         print("Fail")
-
-
-
