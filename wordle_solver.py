@@ -1,4 +1,5 @@
 from multiprocessing.sharedctypes import Value
+from optparse import Option
 import time
 import os
 import string
@@ -7,12 +8,16 @@ import string
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.firefox.options import Options
 
 
 class WordleSolver():
 
     def __init__(self):
-        self.driver = webdriver.Firefox(service_log_path=os.devnull)
+        self.options = Options()
+        self.options.add_argument('--headless')
+        self.options.add_argument('--disable-gpu')
+        self.driver = webdriver.Firefox(options=self.options, service_log_path=os.devnull)
         self.first_tile_characters = list(string.ascii_lowercase)
         self.second_tile_characters = list(string.ascii_lowercase)
         self.third_tile_characters = list(string.ascii_lowercase)
@@ -154,6 +159,7 @@ class WordleSolver():
             winning_word.append(tile.text.lower())
         print('The winning word was:')
         print(''.join(winning_word))
+        b.close()
 
 
 first_tile = 0
