@@ -15,8 +15,8 @@ class WordleSolver():
 
     def __init__(self):
         self.options = Options()
-        self.options.add_argument('--headless')
-        self.options.add_argument('--disable-gpu')
+        #self.options.add_argument('--headless')
+        #self.options.add_argument('--disable-gpu')
         self.driver = webdriver.Firefox(options=self.options, service_log_path=os.devnull)
         self.first_tile_characters = list(string.ascii_lowercase)
         self.second_tile_characters = list(string.ascii_lowercase)
@@ -137,6 +137,7 @@ class WordleSolver():
                 break
             else:
                 time.sleep(1)
+                self.remove_invalid_guess(guess)
                 for i in range(0,5):
                     element.send_keys(Keys.BACKSPACE)
                 
@@ -160,6 +161,19 @@ class WordleSolver():
         print('The winning word was:')
         print(''.join(winning_word))
         b.close()
+    
+    def remove_invalid_guess(self, invalid_word):
+        """Remove any invalid words found whilst guessing from the wordlist file
+        :param invalid_word: string value of the word to be removed"""
+        with open('wordlist.txt', 'wr') as file:
+            lines = file.readlines()
+            for line in lines:
+                word = line.replace('\n', '')
+                if word == invalid_word:
+                    print(f"Removing invalid word {invalid_word}")
+                    lines.remove(line)
+
+            file.write(lines)  
 
 
 first_tile = 0
