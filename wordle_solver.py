@@ -1,5 +1,3 @@
-from multiprocessing.sharedctypes import Value
-from optparse import Option
 import time
 import os
 import string
@@ -27,6 +25,7 @@ class WordleSolver():
         self.required_letters = []
         self.dead_letters = []
         self.word_list = []
+        self.invalid_guesses =[]
         with open('wordlist.txt', 'r') as file:
             lines = file.readlines()        
             for line in lines:
@@ -137,7 +136,7 @@ class WordleSolver():
                 break
             else:
                 time.sleep(1)
-                self.remove_invalid_guess(guess)
+                self.invalid_guesses.append(guess)
                 for i in range(0,5):
                     element.send_keys(Keys.BACKSPACE)
                 
@@ -160,20 +159,29 @@ class WordleSolver():
             winning_word.append(tile.text.lower())
         print('The winning word was:')
         print(''.join(winning_word))
+        print('removing invalid guesses')
+        self.remove_invalid_guess()
         b.close()
+
     
-    def remove_invalid_guess(self, invalid_word):
+    def remove_invalid_guess(self):
         """Remove any invalid words found whilst guessing from the wordlist file
         :param invalid_word: string value of the word to be removed"""
-        with open('wordlist.txt', 'wr') as file:
-            lines = file.readlines()
-            for line in lines:
-                word = line.replace('\n', '')
-                if word == invalid_word:
-                    print(f"Removing invalid word {invalid_word}")
-                    lines.remove(line)
+        if len(self.invalid_guesses) > 0:
+            print('Cleaning up word file')
+            with open('wordlist.txt', 'r') as readFile:
+                lines = readFile.readlines()
 
-            file.write(lines)  
+            for line in lines:
+                word = line.replace('\n','')
+                if word in self.invalid_guesses:
+                    lines.remove(line)
+            
+            with open('wordlist.txt', 'w') as writeFile:
+                writeFile.writelines(lines)
+            print('Clean up finished')
+        else:
+            print("No words to remove")
 
 
 first_tile = 0
