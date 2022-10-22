@@ -33,6 +33,7 @@ class WordleSolver():
                 self.word_list.append(word)
 
     def send_first_guess(self):
+        # added coment
         b = self.driver
         b.get('https://nytimes.com/games/wordle/index.html')
         # clear the damnned popups
