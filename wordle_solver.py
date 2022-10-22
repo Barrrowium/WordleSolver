@@ -38,13 +38,20 @@ class WordleSolver():
         # clear the damnned popups
         b.find_element(By.ID, 'pz-gdpr-btn-reject').click()
         b.find_element(By.CLASS_NAME, 'Modal-module_closeIcon__b4z74').click()
-
+        
         element =  b.find_element(By.TAG_NAME, 'html')
+        time.sleep(2)
             
         # send characters
         element.send_keys('adieu')
+        
         element.send_keys(Keys.RETURN)
-        time.sleep(4)
+        tiles = b.find_elements(By.CLASS_NAME,"Tile-module_tile__3ayIZ")
+        adieu_tiles = tiles[0:5]
+        while adieu_tiles[4].get_attribute('data-state') == 'tbd':
+                    time.sleep(1) 
+
+    
 
     def process_guess(self, first_tile, last_tile):
         """Grabs a set of tiles and looks at the result"""
@@ -84,7 +91,8 @@ class WordleSolver():
                     except ValueError:
                         pass
                     else:
-                        self.required_letters.append(info['letter'])
+                        if info['letter'] not in self.required_letters:
+                            self.required_letters.append(info['letter'])
             
             if k == 'absent':
                 for info in v:
@@ -94,6 +102,9 @@ class WordleSolver():
                                 ll.remove(info['letter'])
                             except ValueError:
                                 pass
+                            else:
+                                if info['letter'] not in self.dead_letters:
+                                    self.dead_letters.append(info['letter'])
 
 
     def build_guess_list(self):
@@ -118,7 +129,7 @@ class WordleSolver():
         
         for word_to_remove in words_to_remove:
             if word_to_remove in self.word_list:
-                self.word_list.remove(word_to_remove)
+                 self.word_list.remove(word_to_remove)
         
     def try_next_guess(self, start_tile, end_tile):
         """Takes the list of guesses and tries for the next one"""
@@ -137,6 +148,7 @@ class WordleSolver():
             else:
                 time.sleep(1)
                 self.invalid_guesses.append(guess)
+                self.word_list.remove(guess)
                 for i in range(0,5):
                     element.send_keys(Keys.BACKSPACE)
                 
@@ -158,8 +170,7 @@ class WordleSolver():
         for tile in tile_checker:
             winning_word.append(tile.text.lower())
         print('The winning word was:')
-        print(''.join(winning_word))
-        print('removing invalid guesses')
+        print("\t" + ''.join(winning_word))
         self.remove_invalid_guess()
         b.close()
 
@@ -181,7 +192,7 @@ class WordleSolver():
                 writeFile.writelines(lines)
             print('Clean up finished')
         else:
-            print("No words to remove")
+            print("\nNo words to remove")
 
 
 first_tile = 0
@@ -192,12 +203,12 @@ ws.send_first_guess()
 while True:
     ws.process_guess(first_tile, second_tile)
     first_tile += 5
-    second_tile +=5
+    second_tile += 5
     ws.build_guess_list()
     ws.try_next_guess(first_tile, second_tile)
     win = ws.check_for_win(first_tile, second_tile)
     if win == 5:
-        print("Win")
+        print("Win!\n")
         ws.print_winning_word(first_tile, second_tile)
         break
     else:

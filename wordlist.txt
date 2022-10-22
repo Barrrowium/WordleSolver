@@ -811,7 +811,6 @@ bacca
 bache
 Bacis
 bacon
-badan
 badge
 badly
 Badon
@@ -1205,7 +1204,6 @@ blent
 bless
 blest
 blibe
-blick
 blimp
 blimy
 blind
@@ -1262,7 +1260,6 @@ bohea
 bohor
 Boiko
 boily
-boist
 bokom
 Bolag
 bolar
@@ -1799,7 +1796,6 @@ chico
 chide
 chief
 Chien
-chien
 child
 chile
 chili
@@ -4055,7 +4051,6 @@ hocky
 hocus
 hoddy
 hogan
-hoggy
 Hogni
 hoick
 hoise
@@ -7525,7 +7520,6 @@ scoke
 scolb
 scold
 scone
-scoon
 scoop
 scoot
 scopa
