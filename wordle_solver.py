@@ -31,13 +31,17 @@ class WordleSolver():
             for line in lines:
                 word = line.replace('\n', '')
                 self.word_list.append(word)
+        self.selectors = {
+            'reject_cookies': 'pz-gdpr-btn-reject',
+
+        }
 
     def send_first_guess(self):
         # added coment
         b = self.driver
         b.get('https://nytimes.com/games/wordle/index.html')
         # clear the damnned popups
-        b.find_element(By.ID, 'pz-gdpr-btn-reject').click()
+        b.find_element(By.ID, self.selectors['reject_cookies']).click()
         b.find_element(By.CLASS_NAME, 'Modal-module_closeIcon__b4z74').click()
         
         element =  b.find_element(By.TAG_NAME, 'html')
@@ -104,8 +108,11 @@ class WordleSolver():
                             except ValueError:
                                 pass
                             else:
-                                if info['letter'] not in self.dead_letters:
-                                    self.dead_letters.append(info['letter'])
+                                if info['letter'] in self.required_letters:
+                                    pass
+                                else:
+                                    if info['letter'] not in self.dead_letters:
+                                        self.dead_letters.append(info['letter'])
 
 
     def build_guess_list(self):
@@ -141,7 +148,7 @@ class WordleSolver():
             element.send_keys(Keys.RETURN)
             tiles = b.find_elements(By.CLASS_NAME,"Tile-module_tile__3ayIZ")
             second_tiles = tiles[start_tile:end_tile]
-            time.sleep(1)
+            time.sleep(2)
             if second_tiles[0].get_attribute('data-state') != 'tbd':
                 while second_tiles[4].get_attribute('data-state') == 'tbd':
                     time.sleep(1)

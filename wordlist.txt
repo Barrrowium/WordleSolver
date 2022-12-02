@@ -808,7 +808,6 @@ Babua
 babul
 bacao
 bacca
-bache
 Bacis
 bacon
 badge
@@ -825,7 +824,6 @@ Baham
 bahan
 bahar
 bahay
-bahoe
 bahoo
 bahur
 bahut
@@ -3796,7 +3794,6 @@ gugal
 guiba
 guide
 Guido
-guige
 guijo
 guild
 guile
@@ -9406,7 +9403,6 @@ unhit
 unhot
 Uniat
 uniat
-unice
 unify
 uninn
 union
