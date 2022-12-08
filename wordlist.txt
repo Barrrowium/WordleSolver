@@ -1120,7 +1120,6 @@ bider
 bidet
 bidri
 bield
-bifer
 bifid
 bigha
 bight
@@ -1170,7 +1169,6 @@ bitty
 biune
 bixin
 Bizen
-bizet
 black
 blade
 blady
@@ -1217,7 +1215,6 @@ blood
 bloom
 bloop
 blore
-blout
 blown
 blowy
 bluer

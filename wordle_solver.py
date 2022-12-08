@@ -13,7 +13,7 @@ class WordleSolver():
 
     def __init__(self):
         self.options = Options()
-        #self.options.add_argument('--headless')
+        self.options.add_argument('--headless')
         #self.options.add_argument('--disable-gpu')
         self.driver = webdriver.Firefox(options=self.options, service_log_path=os.devnull)
         self.first_tile_characters = list(string.ascii_lowercase)
@@ -202,6 +202,14 @@ class WordleSolver():
         else:
             print("\nNo words to remove")
 
+    def check_word_list_not_empty(self):
+        """Check the wordlist to ensure it is not empty - end the session if it is"""
+        if len(self.word_list) == 0:
+            self.driver.close()
+            print("Guess list was wiped, debug for more info")
+            os.exit()
+
+
 
 first_tile = 0
 second_tile = 5
@@ -213,6 +221,7 @@ while True:
     first_tile += 5
     second_tile += 5
     ws.build_guess_list()
+    ws.check_word_list_not_empty()
     ws.try_next_guess(first_tile, second_tile)
     win = ws.check_for_win(first_tile, second_tile)
     if win == 5:
