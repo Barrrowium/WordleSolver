@@ -144,6 +144,7 @@ class WordleSolver():
         b = self.driver
         element =  b.find_element(By.TAG_NAME, 'html')
         for guess in self.word_list:
+            print(f"Attempting word: {guess}")
             element.send_keys(guess)
             element.send_keys(Keys.RETURN)
             tiles = b.find_elements(By.CLASS_NAME,"Tile-module_tile__3ayIZ")
@@ -155,6 +156,7 @@ class WordleSolver():
                 break
             else:
                 time.sleep(1)
+                print("\nInvalid guess - Appending to cleanup list")
                 self.invalid_guesses.append(guess)
                 self.word_list.remove(guess)
                 for i in range(0,5):

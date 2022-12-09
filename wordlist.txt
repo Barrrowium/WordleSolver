@@ -870,7 +870,6 @@ banco
 Banda
 banda
 bande
-bandi
 bando
 bandy
 Banff
@@ -893,7 +892,6 @@ barge
 bargh
 baria
 baric
-barid
 barie
 baris
 barit
@@ -1113,7 +1111,6 @@ biabo
 Bibio
 Bible
 bichy
-bidar
 Biddy
 biddy
 bider
