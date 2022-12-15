@@ -800,7 +800,6 @@ Aztec
 azure
 azury
 azyme
-babai
 babby
 Babel
 baboo
@@ -840,7 +839,6 @@ baked
 baken
 baker
 bakie
-bakli
 balai
 Balak
 Balan
@@ -851,7 +849,6 @@ baldy
 balei
 baler
 balky
-balli
 bally
 balmy
 baloo
@@ -890,15 +887,12 @@ barer
 barff
 barge
 bargh
-baria
 baric
 barie
-baris
 barit
 barky
 barmy
 barny
-baroi
 baron
 barra
 Barry
@@ -7146,7 +7140,6 @@ rigol
 rigor
 riley
 rilly
-rimal
 rimer
 rimpi
 rinch
@@ -7156,7 +7149,6 @@ ringe
 ringy
 rinka
 rinse
-ripal
 ripen
 riper
 ripup

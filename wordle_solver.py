@@ -13,7 +13,7 @@ class WordleSolver():
 
     def __init__(self):
         self.options = Options()
-        self.options.add_argument('--headless')
+        #self.options.add_argument('--headless')
         #self.options.add_argument('--disable-gpu')
         self.driver = webdriver.Firefox(options=self.options, service_log_path=os.devnull)
         self.first_tile_characters = list(string.ascii_lowercase)
@@ -43,16 +43,16 @@ class WordleSolver():
         # clear the damnned popups
         b.find_element(By.ID, self.selectors['reject_cookies']).click()
         b.find_element(By.CLASS_NAME, 'Modal-module_closeIcon__b4z74').click()
-        
+
         element =  b.find_element(By.TAG_NAME, 'html')
         time.sleep(2)
-            
+
         # send characters
         element.send_keys('adieu')
-        
+
         element.send_keys(Keys.RETURN)
         tiles = b.find_elements(By.CLASS_NAME,"Tile-module_tile__3ayIZ")
-        adieu_tiles = tiles[0:5]
+        adieu_tiles = tiles[:5]
         while adieu_tiles[4].get_attribute('data-state') == 'tbd':
                     time.sleep(1) 
 
@@ -77,17 +77,11 @@ class WordleSolver():
             if k == 'correct':
                 for info in v:
                     target_list = self.letter_lists[info['iteration']]
-                    remove_chars = []
                     if len(target_list) != 1:
-                        for letter in target_list:
-                            if letter != info['letter']:
-                                remove_chars.append(letter)
+                        remove_chars = [letter for letter in target_list if letter != info['letter']]
                         for char in remove_chars:
                             if char in target_list:
                                 target_list.remove(char)
-                    else:
-                        pass
-
             if k == 'present':
                 for info in v:
                     target_list = self.letter_lists[info['iteration']]
@@ -98,7 +92,7 @@ class WordleSolver():
                     else:
                         if info['letter'] not in self.required_letters:
                             self.required_letters.append(info['letter'])
-            
+
             if k == 'absent':
                 for info in v:
                     for ll in self.letter_lists:
@@ -108,18 +102,18 @@ class WordleSolver():
                             except ValueError:
                                 pass
                             else:
-                                if info['letter'] in self.required_letters:
-                                    pass
-                                else:
-                                    if info['letter'] not in self.dead_letters:
-                                        self.dead_letters.append(info['letter'])
+                                if (
+                                    info['letter'] not in self.required_letters
+                                    and info['letter'] not in self.dead_letters
+                                ):
+                                    self.dead_letters.append(info['letter'])
 
 
     def build_guess_list(self):
         """Take the word list and remove words that dont meet the criteria"""
         words_to_remove = []
         for word in self.word_list:
-            for n in range(0,5):
+            for n in range(5):
                 if word[n] not in self.letter_lists[n]:
                     words_to_remove.append(word)
                     break
@@ -129,12 +123,12 @@ class WordleSolver():
                 if dead_letter in potential_guess:
                     words_to_remove.append(potential_guess)
                     break
-            
+
             for required_letter in self.required_letters:
                 if required_letter not in potential_guess:
                     words_to_remove.append(potential_guess)
                     break
-        
+
         for word_to_remove in words_to_remove:
             if word_to_remove in self.word_list:
                  self.word_list.remove(word_to_remove)
@@ -144,7 +138,7 @@ class WordleSolver():
         b = self.driver
         element =  b.find_element(By.TAG_NAME, 'html')
         for guess in self.word_list:
-            print(f"Attempting word: {guess}")
+            print(f"\nAttempting guess: {guess}")
             element.send_keys(guess)
             element.send_keys(Keys.RETURN)
             tiles = b.find_elements(By.CLASS_NAME,"Tile-module_tile__3ayIZ")
@@ -156,29 +150,25 @@ class WordleSolver():
                 break
             else:
                 time.sleep(1)
-                print("\nInvalid guess - Appending to cleanup list")
+                print("Invalid guess - Appending to cleanup list")
                 self.invalid_guesses.append(guess)
                 self.word_list.remove(guess)
-                for i in range(0,5):
+                for _ in range(5):
                     element.send_keys(Keys.BACKSPACE)
                 
     def check_for_win(self, start_tile, end_tile):
         b = self.driver
-        counter = 0
         tiles = b.find_elements(By.CLASS_NAME,"Tile-module_tile__3ayIZ")
         tile_checker = tiles[start_tile:end_tile]
-        for tile in tile_checker:
-            if tile.get_attribute('data-state') == 'correct':
-                counter += 1
-        return counter
+        return sum(
+            tile.get_attribute('data-state') == 'correct' for tile in tile_checker
+        )
 
     def print_winning_word(self, start_tile,end_tile):
         b = self.driver
         tiles = b.find_elements(By.CLASS_NAME,"Tile-module_tile__3ayIZ")
         tile_checker = tiles[start_tile:end_tile]
-        winning_word = []
-        for tile in tile_checker:
-            winning_word.append(tile.text.lower())
+        winning_word = [tile.text.lower() for tile in tile_checker]
         print('The winning word was:')
         print("\t" + ''.join(winning_word))
         self.remove_invalid_guess()
@@ -189,7 +179,7 @@ class WordleSolver():
         """Remove any invalid words found whilst guessing from the wordlist file
         :param invalid_word: string value of the word to be removed"""
         if len(self.invalid_guesses) > 0:
-            print('Cleaning up word file')
+            print('\nCleaning up word file')
             with open('wordlist.txt', 'r') as readFile:
                 lines = readFile.readlines()
 
@@ -200,7 +190,7 @@ class WordleSolver():
             
             with open('wordlist.txt', 'w') as writeFile:
                 writeFile.writelines(lines)
-            print('Clean up finished')
+            print(f'Clean up finished removed {len(self.invalid_guesses)} words!')
         else:
             print("\nNo words to remove")
 
@@ -209,7 +199,7 @@ class WordleSolver():
         if len(self.word_list) == 0:
             self.driver.close()
             print("Guess list was wiped, debug for more info")
-            os.exit()
+            raise AssertionError
 
 
 
