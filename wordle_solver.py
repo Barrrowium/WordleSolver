@@ -1,3 +1,4 @@
+import contextlib
 import time
 import os
 import string
@@ -95,20 +96,15 @@ class WordleSolver():
 
             if k == 'absent':
                 for info in v:
-                    for ll in self.letter_lists:
-                        if len(ll) != 1:
-                            try:
-                                ll.remove(info['letter'])
-                            except ValueError:
-                                pass
-                            else:
-                                if (
-                                    info['letter'] not in self.required_letters
-                                    and info['letter'] not in self.dead_letters
-                                ):
-                                    self.dead_letters.append(info['letter'])
+                    if (info['letter'] not in self.required_letters
+                        and info['letter'] not in self.dead_letters):
+                        self.dead_letters.append(info['letter'])
 
-
+                        for ll in self.letter_lists:
+                            if len(ll) != 1:
+                                with contextlib.suppress(ValueError):
+                                    ll.remove(info['letter'])
+                
     def build_guess_list(self):
         """Take the word list and remove words that dont meet the criteria"""
         words_to_remove = []
