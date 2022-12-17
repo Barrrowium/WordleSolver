@@ -16,6 +16,7 @@ class WordleSolver():
         self.options = Options()
         #self.options.add_argument('--headless')
         #self.options.add_argument('--disable-gpu')
+        # TODO: Handle service log path being depreciated
         self.driver = webdriver.Firefox(options=self.options, service_log_path=os.devnull)
         self.first_tile_characters = list(string.ascii_lowercase)
         self.second_tile_characters = list(string.ascii_lowercase)
@@ -25,16 +26,20 @@ class WordleSolver():
         self.letter_lists = [self.first_tile_characters, self.second_tile_characters, self.third_tile_characters, self.fourth_tile_characters, self.fifth_tile_characters]
         self.required_letters = []
         self.dead_letters = []
+        self.confirmed_letters = []
         self.word_list = []
         self.invalid_guesses =[]
+        
         with open('wordlist.txt', 'r') as file:
             lines = file.readlines()        
             for line in lines:
                 word = line.replace('\n', '')
                 self.word_list.append(word)
+        # TODO: Actually use these selectors
         self.selectors = {
             'reject_cookies': 'pz-gdpr-btn-reject',
-
+            'close_tutorial': 'Modal-module_closeIcon__b4z74',
+            'tiles': 'Tile-module_tile__3ayIZ'
         }
 
     def send_first_guess(self):
@@ -55,9 +60,7 @@ class WordleSolver():
         tiles = b.find_elements(By.CLASS_NAME,"Tile-module_tile__3ayIZ")
         adieu_tiles = tiles[:5]
         while adieu_tiles[4].get_attribute('data-state') == 'tbd':
-                    time.sleep(1) 
-
-    
+            time.sleep(1) 
 
     def process_guess(self, first_tile, last_tile):
         """Grabs a set of tiles and looks at the result"""
@@ -74,15 +77,22 @@ class WordleSolver():
                     tile_info = {'letter': text_entered, 'iteration': iteration}
                     v.append(tile_info)
 
+        return test_dict
+
+    def update_letter_lists(self, test_dict):
+        """Splits out the guess process and the letter updating"""
         for k, v in test_dict.items():
             if k == 'correct':
                 for info in v:
                     target_list = self.letter_lists[info['iteration']]
+                    self.confirmed_letters.append(info['letter'])
                     if len(target_list) != 1:
                         remove_chars = [letter for letter in target_list if letter != info['letter']]
                         for char in remove_chars:
                             if char in target_list:
                                 target_list.remove(char)
+
+
             if k == 'present':
                 for info in v:
                     target_list = self.letter_lists[info['iteration']]
@@ -96,10 +106,10 @@ class WordleSolver():
 
             if k == 'absent':
                 for info in v:
-                    if (info['letter'] not in self.required_letters
-                        and info['letter'] not in self.dead_letters):
+                    if (info['letter'] not in self.required_letters 
+                    and info['letter'] not in self.dead_letters 
+                    and info['letter'] not in self.confirmed_letters):                 
                         self.dead_letters.append(info['letter'])
-
                         for ll in self.letter_lists:
                             if len(ll) != 1:
                                 with contextlib.suppress(ValueError):
@@ -169,8 +179,8 @@ class WordleSolver():
         print("\t" + ''.join(winning_word))
         self.remove_invalid_guess()
         b.close()
-
-    
+  
+    # TODO: Change this to remove guesses as they are found
     def remove_invalid_guess(self):
         """Remove any invalid words found whilst guessing from the wordlist file
         :param invalid_word: string value of the word to be removed"""
@@ -190,14 +200,7 @@ class WordleSolver():
         else:
             print("\nNo words to remove")
 
-    def check_word_list_not_empty(self):
-        """Check the wordlist to ensure it is not empty - end the session if it is"""
-        if len(self.word_list) == 0:
-            self.driver.close()
-            print("Guess list was wiped, debug for more info")
-            raise AssertionError
-
-
+# TODO: Bring this into the class
 
 first_tile = 0
 second_tile = 5
@@ -205,11 +208,11 @@ ws = WordleSolver()
 ws.send_first_guess()
 
 while True:
-    ws.process_guess(first_tile, second_tile)
+    test_dict = ws.process_guess(first_tile, second_tile)
+    ws.update_letter_lists(test_dict)
     first_tile += 5
     second_tile += 5
     ws.build_guess_list()
-    ws.check_word_list_not_empty()
     ws.try_next_guess(first_tile, second_tile)
     win = ws.check_for_win(first_tile, second_tile)
     if win == 5:
