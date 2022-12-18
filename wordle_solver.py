@@ -83,37 +83,54 @@ class WordleSolver():
         """Splits out the guess process and the letter updating"""
         for k, v in test_dict.items():
             if k == 'correct':
-                for info in v:
-                    target_list = self.letter_lists[info['iteration']]
-                    self.confirmed_letters.append(info['letter'])
-                    if len(target_list) != 1:
-                        remove_chars = [letter for letter in target_list if letter != info['letter']]
-                        for char in remove_chars:
-                            if char in target_list:
-                                target_list.remove(char)
+                self.process_correct_guesses(v)
+            elif k == 'present':
+                self.process_present_guesses(v)
+            elif k == 'absent':
+                self.process_absent_guesses(v)
 
+    def process_correct_guesses(self, v):
+        """logic for processing the charactes in the correct list
+        param v: the value from iterating over the passed dict"""
+        for info in v:
+            target_list = self.letter_lists[info['iteration']]
+            self.confirmed_letters.append(info['letter'])
+            if len(target_list) != 1:
+                remove_chars = [letter for letter in target_list if letter != info['letter']]
+                for char in remove_chars:
+                    if char in target_list:
+                        target_list.remove(char)
 
-            if k == 'present':
-                for info in v:
-                    target_list = self.letter_lists[info['iteration']]
-                    try:
-                        target_list.remove(info['letter'])
-                    except ValueError:
-                        pass
-                    else:
-                        if info['letter'] not in self.required_letters:
-                            self.required_letters.append(info['letter'])
+    def process_present_guesses(self, v):
+        """Logic for processign present letters""" 
+        for info in v:
+            target_list = self.letter_lists[info['iteration']]
+            try:
+                target_list.remove(info['letter'])
+            except ValueError:
+                pass
+            else:
+                if info['letter'] not in self.required_letters:
+                    self.required_letters.append(info['letter'])
 
-            if k == 'absent':
-                for info in v:
-                    if (info['letter'] not in self.required_letters 
-                    and info['letter'] not in self.dead_letters 
-                    and info['letter'] not in self.confirmed_letters):                 
-                        self.dead_letters.append(info['letter'])
-                        for ll in self.letter_lists:
-                            if len(ll) != 1:
-                                with contextlib.suppress(ValueError):
-                                    ll.remove(info['letter'])
+    def process_absent_guesses(self, v):
+        """"Logic for processign absent letters
+        param v: the value of the list in the iteration"""
+        for info in v:
+            if (info['letter'] not in self.required_letters 
+            and info['letter'] not in self.dead_letters 
+            and info['letter'] not in self.confirmed_letters):                 
+                self.dead_letters.append(info['letter'])
+                for ll in self.letter_lists:
+                    if len(ll) != 1:
+                        with contextlib.suppress(ValueError):
+                            ll.remove(info['letter'])
+            elif info['letter'] in self.required_letters or info['letter'] in self.confirmed_letters:
+                for ll in self.letter_lists:
+                    if len(ll) !=1:
+                        with contextlib.suppress(ValueError):
+                            ll.remove(info['letter'])
+
                 
     def build_guess_list(self):
         """Take the word list and remove words that dont meet the criteria"""
@@ -166,9 +183,12 @@ class WordleSolver():
         b = self.driver
         tiles = b.find_elements(By.CLASS_NAME,"Tile-module_tile__3ayIZ")
         tile_checker = tiles[start_tile:end_tile]
-        return sum(
+        total = sum(
             tile.get_attribute('data-state') == 'correct' for tile in tile_checker
         )
+        return total == 5
+    
+    # TODO: Add in some logic for exiting upon failing
 
     def print_winning_word(self, start_tile,end_tile):
         b = self.driver
@@ -200,6 +220,13 @@ class WordleSolver():
         else:
             print("\nNo words to remove")
 
+    def handle_failure(self, first_tile, second_tile):
+        """exists the program gracefully upon running out of guesses"""
+        if first_tile == 25 and second_tile == 30:
+            print('Run out of guesses')
+            self.driver.close()
+            os._exit(os.EX_OK)          
+
 # TODO: Bring this into the class
 
 first_tile = 0
@@ -214,10 +241,11 @@ while True:
     second_tile += 5
     ws.build_guess_list()
     ws.try_next_guess(first_tile, second_tile)
-    win = ws.check_for_win(first_tile, second_tile)
-    if win == 5:
+    if win := ws.check_for_win(first_tile, second_tile):
         print("Win!\n")
         ws.print_winning_word(first_tile, second_tile)
         break
     else:
         print("Fail")
+        ws.handle_failure(first_tile, second_tile)
+        
