@@ -14,9 +14,8 @@ class WordleSolver():
 
     def __init__(self):
         self.options = Options()
-        #self.options.add_argument('--headless')
-        #self.options.add_argument('--disable-gpu')
-        # TODO: Handle service log path being depreciated
+        self.options.add_argument('--headless')
+        self.options.add_argument('--disable-gpu')
         self.driver = webdriver.Firefox(options=self.options, service_log_path=os.devnull)
         self.first_tile_characters = list(string.ascii_lowercase)
         self.second_tile_characters = list(string.ascii_lowercase)
@@ -35,7 +34,6 @@ class WordleSolver():
             for line in lines:
                 word = line.replace('\n', '')
                 self.word_list.append(word)
-        # TODO: Actually use these selectors
         self.selectors = {
             'reject_cookies': 'pz-gdpr-btn-reject',
             'close_tutorial': 'Modal-module_closeIcon__b4z74',
@@ -43,7 +41,6 @@ class WordleSolver():
         }
 
     def send_first_guess(self):
-        # added coment
         b = self.driver
         b.get('https://nytimes.com/games/wordle/index.html')
         # clear the damnned popups
@@ -187,8 +184,6 @@ class WordleSolver():
             tile.get_attribute('data-state') == 'correct' for tile in tile_checker
         )
         return total == 5
-    
-    # TODO: Add in some logic for exiting upon failing
 
     def print_winning_word(self, start_tile,end_tile):
         b = self.driver
@@ -200,7 +195,6 @@ class WordleSolver():
         self.remove_invalid_guess()
         b.close()
   
-    # TODO: Change this to remove guesses as they are found
     def remove_invalid_guess(self):
         """Remove any invalid words found whilst guessing from the wordlist file
         :param invalid_word: string value of the word to be removed"""
@@ -226,8 +220,6 @@ class WordleSolver():
             print('Run out of guesses')
             self.driver.close()
             os._exit(os.EX_OK)          
-
-# TODO: Bring this into the class
 
 first_tile = 0
 second_tile = 5
