@@ -39,6 +39,7 @@ class WordleSolver():
             'close_tutorial': 'Modal-module_closeIcon__b4z74',
             'tiles': 'Tile-module_tile__3ayIZ'
         }
+    
 
     def send_first_guess(self):
         b = self.driver
