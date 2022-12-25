@@ -3,7 +3,6 @@ import time
 import os
 import string
 
-
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -200,7 +199,6 @@ class WordleSolver():
         self.remove_invalid_guess()
         b.close()
   
-    # TODO: Change this to remove guesses as they are found
     def remove_invalid_guess(self):
         """Remove any invalid words found whilst guessing from the wordlist file
         :param invalid_word: string value of the word to be removed"""
@@ -227,25 +225,27 @@ class WordleSolver():
             self.driver.close()
             os._exit(os.EX_OK)          
 
-# TODO: Bring this into the class
 
-first_tile = 0
-second_tile = 5
-ws = WordleSolver()
-ws.send_first_guess()
+    def solve(self):
 
-while True:
-    test_dict = ws.process_guess(first_tile, second_tile)
-    ws.update_letter_lists(test_dict)
-    first_tile += 5
-    second_tile += 5
-    ws.build_guess_list()
-    ws.try_next_guess(first_tile, second_tile)
-    if win := ws.check_for_win(first_tile, second_tile):
-        print("Win!\n")
-        ws.print_winning_word(first_tile, second_tile)
-        break
-    else:
-        print("Fail")
-        ws.handle_failure(first_tile, second_tile)
+        first_tile = 0
+        second_tile = 5
+
+        while True:
+            test_dict = self.process_guess(first_tile, second_tile)
+            self.update_letter_lists(test_dict)
+            first_tile += 5
+            second_tile += 5
+            self.build_guess_list()
+            self.try_next_guess(first_tile, second_tile)
+            if win := self.check_for_win(first_tile, second_tile):
+                print("Win!\n")
+                self.print_winning_word(first_tile, second_tile)
+                break
+            else:
+                print("Fail")
+                self.handle_failure(first_tile, second_tile)
         
+
+ws=WordleSolver()
+ws.solve()
