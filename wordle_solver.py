@@ -3,7 +3,6 @@ import time
 import os
 import string
 
-
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -46,7 +45,7 @@ class WordleSolver():
         b.get('https://nytimes.com/games/wordle/index.html')
         # clear the damnned popups
         b.find_element(By.ID, self.selectors['reject_cookies']).click()
-        b.find_element(By.CLASS_NAME, 'Modal-module_closeIcon__b4z74').click()
+        b.find_element(By.CLASS_NAME, self.selectors['close_tutorial']).click()
 
         element =  b.find_element(By.TAG_NAME, 'html')
         time.sleep(2)
@@ -55,19 +54,18 @@ class WordleSolver():
         element.send_keys('adieu')
 
         element.send_keys(Keys.RETURN)
-        tiles = b.find_elements(By.CLASS_NAME,"Tile-module_tile__3ayIZ")
+        tiles = b.find_elements(By.CLASS_NAME,self.selectors['tiles'])
         adieu_tiles = tiles[:5]
         while adieu_tiles[4].get_attribute('data-state') == 'tbd':
             time.sleep(1) 
 
     def process_guess(self, first_tile, last_tile):
         """Grabs a set of tiles and looks at the result"""
-        tiles = self.driver.find_elements(By.CLASS_NAME,"Tile-module_tile__3ayIZ")
-        first_tiles = tiles[first_tile:last_tile]
+        tiles = self.driver.find_elements(By.CLASS_NAME, self.selectors['tiles'])[first_tile:last_tile]
         test_dict = {'correct':[],
                         'present':[],
                         'absent':[],}
-        for iteration, tile in enumerate(first_tiles):
+        for iteration, tile in enumerate(tiles):
             state = tile.get_attribute('data-state')
             text_entered = tile.text.lower()
             for k, v in test_dict.items():
@@ -162,11 +160,10 @@ class WordleSolver():
             print(f"\nAttempting guess: {guess}")
             element.send_keys(guess)
             element.send_keys(Keys.RETURN)
-            tiles = b.find_elements(By.CLASS_NAME,"Tile-module_tile__3ayIZ")
-            second_tiles = tiles[start_tile:end_tile]
+            tiles = b.find_elements(By.CLASS_NAME, self.selectors['tiles'])[start_tile:end_tile]
             time.sleep(2)
-            if second_tiles[0].get_attribute('data-state') != 'tbd':
-                while second_tiles[4].get_attribute('data-state') == 'tbd':
+            if tiles[0].get_attribute('data-state') != 'tbd':
+                while tiles[4].get_attribute('data-state') == 'tbd':
                     time.sleep(1)
                 break
             else:
@@ -179,18 +176,16 @@ class WordleSolver():
                 
     def check_for_win(self, start_tile, end_tile):
         b = self.driver
-        tiles = b.find_elements(By.CLASS_NAME,"Tile-module_tile__3ayIZ")
-        tile_checker = tiles[start_tile:end_tile]
+        tiles = b.find_elements(By.CLASS_NAME, self.selectors['tiles'])[start_tile:end_tile]
         total = sum(
-            tile.get_attribute('data-state') == 'correct' for tile in tile_checker
+            tile.get_attribute('data-state') == 'correct' for tile in tiles
         )
         return total == 5
 
     def print_winning_word(self, start_tile,end_tile):
         b = self.driver
-        tiles = b.find_elements(By.CLASS_NAME,"Tile-module_tile__3ayIZ")
-        tile_checker = tiles[start_tile:end_tile]
-        winning_word = [tile.text.lower() for tile in tile_checker]
+        tiles = b.find_elements(By.CLASS_NAME, self.selectors['tiles'])[start_tile:end_tile]
+        winning_word = [tile.text.lower() for tile in tiles]
         print('The winning word was:')
         print("\t" + ''.join(winning_word))
         self.remove_invalid_guess()
@@ -222,23 +217,27 @@ class WordleSolver():
             self.driver.close()
             os._exit(os.EX_OK)          
 
-first_tile = 0
-second_tile = 5
-ws = WordleSolver()
-ws.send_first_guess()
+    def solve(self):
+        first_tile = 0
+        second_tile = 5
 
-while True:
-    test_dict = ws.process_guess(first_tile, second_tile)
-    ws.update_letter_lists(test_dict)
-    first_tile += 5
-    second_tile += 5
-    ws.build_guess_list()
-    ws.try_next_guess(first_tile, second_tile)
-    if win := ws.check_for_win(first_tile, second_tile):
-        print("Win!\n")
-        ws.print_winning_word(first_tile, second_tile)
-        break
-    else:
-        print("Fail")
-        ws.handle_failure(first_tile, second_tile)
+        self.send_first_guess()
+
+        while True:
+            test_dict = self.process_guess(first_tile, second_tile)
+            self.update_letter_lists(test_dict)
+            first_tile += 5
+            second_tile += 5
+            self.build_guess_list()
+            self.try_next_guess(first_tile, second_tile)
+            if win := self.check_for_win(first_tile, second_tile):
+                print("Win!\n")
+                self.print_winning_word(first_tile, second_tile)
+                break
+            else:
+                print("Fail")
+                self.handle_failure(first_tile, second_tile)
         
+
+ws=WordleSolver()
+ws.solve()
