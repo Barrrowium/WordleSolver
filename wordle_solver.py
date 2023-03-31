@@ -37,8 +37,8 @@ class WordleSolver():
         # TODO: Actually use these selectors
         self.selectors = {
             'reject_cookies': 'pz-gdpr-btn-reject',
-            'close_tutorial': 'Modal-module_closeIcon__b4z74',
-            'tiles': 'Tile-module_tile__3ayIZ'
+            'close_tutorial': 'Modal-module_closeIcon__TcEKb',
+            'tiles': 'Tile-module_tile__UWEHN'
         }
 
     def send_first_guess(self):
@@ -56,7 +56,7 @@ class WordleSolver():
         element.send_keys('adieu')
 
         element.send_keys(Keys.RETURN)
-        tiles = b.find_elements(By.CLASS_NAME,self.selectors['tiles'])
+        tiles = b.find_elements(By.CLASS_NAME, self.selectors['tiles'])
         adieu_tiles = tiles[:5]
         while adieu_tiles[4].get_attribute('data-state') == 'tbd':
             time.sleep(1) 
@@ -217,7 +217,7 @@ class WordleSolver():
     def handle_failure(self, first_tile, second_tile):
         """exists the program gracefully upon running out of guesses"""
         if first_tile == 25 and second_tile == 30:
-            print('Run out of guesses')
+            print('Ran out of guesses')
             self.driver.close()
             os._exit(os.EX_OK)          
 
