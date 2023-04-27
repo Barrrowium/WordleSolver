@@ -41,8 +41,10 @@ class WordleSolver():
     
 
     def send_first_guess(self):
+        print("Loading web browser")
         b = self.driver
         b.get('https://nytimes.com/games/wordle/index.html')
+        print("Browser loaded, attempting first guess.....")
         # clear the damnned popups
         b.find_element(By.ID, self.selectors['reject_cookies']).click()
         b.find_element(By.CLASS_NAME, self.selectors['close_tutorial']).click()
