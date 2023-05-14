@@ -74,7 +74,7 @@ class WordleSolver():
                 if k == state:
                     tile_info = {'letter': text_entered, 'iteration': iteration}
                     v.append(tile_info)
-
+    
         return test_dict
 
     def update_letter_lists(self, test_dict):
@@ -123,7 +123,9 @@ class WordleSolver():
                     if len(ll) != 1:
                         with contextlib.suppress(ValueError):
                             ll.remove(info['letter'])
-            elif info['letter'] in self.required_letters or info['letter'] in self.confirmed_letters:
+            elif info['letter'] in self.required_letters:
+                pass
+            elif info['letter'] in self.confirmed_letters:
                 for ll in self.letter_lists:
                     if len(ll) !=1:
                         with contextlib.suppress(ValueError):
