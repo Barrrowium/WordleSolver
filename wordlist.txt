@@ -817,7 +817,6 @@ bafta
 Bagdi
 bagel
 baggy
-bagre
 Bahai
 Baham
 bahan
@@ -871,7 +870,6 @@ bando
 bandy
 Banff
 banga
-bange
 banig
 banjo
 banky
@@ -4868,6 +4866,7 @@ lathe
 lathy
 Latin
 latro
+latte
 latus
 lauan
 laugh

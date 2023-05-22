@@ -7,6 +7,8 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.firefox.service import Service as FirefoxService
+from webdriver_manager.firefox import GeckoDriverManager
 
 
 class WordleSolver():
@@ -15,7 +17,7 @@ class WordleSolver():
         self.options = Options()
         self.options.add_argument('--headless')
         self.options.add_argument('--disable-gpu')
-        self.driver = webdriver.Firefox(options=self.options, service_log_path=os.devnull)
+        self.driver = webdriver.Firefox(options=self.options, service=FirefoxService(GeckoDriverManager().install(), log_path=os.devnull))
         self.first_tile_characters = list(string.ascii_lowercase)
         self.second_tile_characters = list(string.ascii_lowercase)
         self.third_tile_characters = list(string.ascii_lowercase)
@@ -33,22 +35,36 @@ class WordleSolver():
             for line in lines:
                 word = line.replace('\n', '')
                 self.word_list.append(word)
+
         self.selectors = {
-            'reject_cookies': 'pz-gdpr-btn-reject',
             'close_tutorial': 'Modal-module_closeIcon__TcEKb',
-            'tiles': 'Tile-module_tile__UWEHN'
+            'tiles': 'Tile-module_tile__UWEHN',
+            'menu_buttons': 'Welcome-module_button__ZG0Zh',
+            'gdpr_consent': 'pz-gdpr-btn-reject'
         }
     
-
-    def send_first_guess(self):
+    def prepare_game_page(self):
+        """Navigates through the menu and clears all browser pop ups"""
         print("Loading web browser")
         b = self.driver
         b.get('https://nytimes.com/games/wordle/index.html')
+
+        # Clear GDPR consent tracker settings
+        b.find_element(By.ID, self.selectors['gdpr_consent']).click()
+
+        # click menu buttons
+        menu_buttons = b.find_elements(By.CLASS_NAME, self.selectors['menu_buttons'])
+        for menu_button in menu_buttons:
+            if 'Play' in menu_button.text:
+                menu_button.click()
         print("Browser loaded, attempting first guess.....")
+        
         # clear the damnned popups
-        b.find_element(By.ID, self.selectors['reject_cookies']).click()
         b.find_element(By.CLASS_NAME, self.selectors['close_tutorial']).click()
 
+    def send_first_guess(self):
+        """Sends the first guess always the control word adieu"""
+        b = self.driver
         element =  b.find_element(By.TAG_NAME, 'html')
         time.sleep(2)
 
@@ -92,12 +108,13 @@ class WordleSolver():
         param v: the value from iterating over the passed dict"""
         for info in v:
             target_list = self.letter_lists[info['iteration']]
-            self.confirmed_letters.append(info['letter'])
-            if len(target_list) != 1:
-                remove_chars = [letter for letter in target_list if letter != info['letter']]
-                for char in remove_chars:
-                    if char in target_list:
-                        target_list.remove(char)
+            if info['letter'] not in self.confirmed_letters:
+                self.confirmed_letters.append(info['letter'])
+                if len(target_list) != 1:
+                    remove_chars = [letter for letter in target_list if letter != info['letter']]
+                    for char in remove_chars:
+                        if char in target_list:
+                            target_list.remove(char)
 
     def process_present_guesses(self, v):
         """Logic for processign present letters""" 
@@ -171,7 +188,7 @@ class WordleSolver():
                     time.sleep(1)
                 break
             else:
-                time.sleep(1)
+                time.sleep(2)
                 print("Invalid guess - Appending to cleanup list")
                 self.invalid_guesses.append(guess)
                 self.word_list.remove(guess)
@@ -217,14 +234,16 @@ class WordleSolver():
     def handle_failure(self, first_tile, second_tile):
         """exists the program gracefully upon running out of guesses"""
         if first_tile == 25 and second_tile == 30:
-            print('Ran out of guesses')
+            print('Ran out of guesses\n')
+            self.remove_invalid_guess()
             self.driver.close()
             os._exit(os.EX_OK)          
 
     def solve(self):
         first_tile = 0
         second_tile = 5
-
+        
+        self.prepare_game_page()
         self.send_first_guess()
 
         while True:
