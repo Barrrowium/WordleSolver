@@ -1,0 +1,316 @@
+1685649563003	geckodriver	INFO	Listening on 127.0.0.1:56715
+1685649563512	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "56716" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/fc/zdh1r5qj07l_90cmz0f5b29r0000gn/T/rust_mozprofilepBWuOp"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1685649563863	Marionette	INFO	Marionette enabled
+1685649563925	Marionette	INFO	Listening on port 56722
+Read port: 56722
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:56716
+1685649564017	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+[ERROR glean_core] Error setting metrics feature config: Json(Error("EOF while parsing a value", line: 1, column: 0))
+DevTools listening on ws://127.0.0.1:56716/devtools/browser/b195ad30-bce5-4372-8232-3f06795b57b7
+JavaScript warning: https://www.googletagmanager.com/gtm.js?id=GTM-P528B3&gtm_auth=tfAzqo1rYDLgYhmTnSjPqw&gtm_preview=env-130&gtm_cookies_win=x, line 1: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtm.js?id=GTM-P528B3&gtm_auth=tfAzqo1rYDLgYhmTnSjPqw&gtm_preview=env-130&gtm_cookies_win=x, line 1: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtm.js?id=GTM-P528B3&gtm_auth=tfAzqo1rYDLgYhmTnSjPqw&gtm_preview=env-130&gtm_cookies_win=x, line 1: unreachable code after return statement
+JavaScript warning: https://pagead2.googlesyndication.com/bg/WucCaKvgDQ9fmljOI_WvgP1fjZ6LWmR4VZAfUyHL0jo.js line 2 > eval line 2051 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://591d3134159f3b1553c5043ddd44c380.safeframe.googlesyndication.com/safeframe/1-0-40/html/container.html, line 603: SyntaxError: expected expression, got ','
+1685649585155	Marionette	INFO	Stopped listening on port 56722
+[Child 65398, Main Thread] WARNING: JSWindowActorChild::SendRawMessage (Conduits, ConduitClosed) not sent: !CanSend() || !mManager || !mManager->CanSend(): file /builds/worker/checkouts/gecko/dom/ipc/jsactor/JSWindowActorChild.cpp:57
+[Child 65398, Main Thread] WARNING: JSWindowActorChild::SendRawMessage (Conduits, ConduitClosed) not sent: !CanSend() || !mManager || !mManager->CanSend(): file /builds/worker/checkouts/gecko/dom/ipc/jsactor/JSWindowActorChild.cpp:57
+[Child 65398, Main Thread] WARNING: JSWindowActorChild::SendRawMessage (Conduits, ConduitClosed) not sent: !CanSend() || !mManager || !mManager->CanSend(): file /builds/worker/checkouts/gecko/dom/ipc/jsactor/JSWindowActorChild.cpp:57
+[Child 65398, Main Thread] WARNING: JSWindowActorChild::SendRawMessage (Conduits, ConduitClosed) not sent: !CanSend() || !mManager || !mManager->CanSend(): file /builds/worker/checkouts/gecko/dom/ipc/jsactor/JSWindowActorChild.cpp:57
+[Child 65398, Main Thread] WARNING: JSWindowActorChild::SendRawMessage (Conduits, ConduitClosed) not sent: !CanSend() || !mManager || !mManager->CanSend(): file /builds/worker/checkouts/gecko/dom/ipc/jsactor/JSWindowActorChild.cpp:57
+[Child 65398, Main Thread] WARNING: JSWindowActorChild::SendRawMessage (Conduits, ConduitClosed) not sent: !CanSend() || !mManager || !mManager->CanSend(): file /builds/worker/checkouts/gecko/dom/ipc/jsactor/JSWindowActorChild.cpp:57
+[Child 65398, Main Thread] WARNING: JSWindowActorChild::SendRawMessage (Conduits, ConduitClosed) not sent: !CanSend() || !mManager || !mManager->CanSend(): file /builds/worker/checkouts/gecko/dom/ipc/jsactor/JSWindowActorChild.cpp:57
+[Child 65398, Main Thread] WARNING: JSWindowActorChild::SendRawMessage (Conduits, ConduitClosed) not sent: !CanSend() || !mManager || !mManager->CanSend(): file /builds/worker/checkouts/gecko/dom/ipc/jsactor/JSWindowActorChild.cpp:57
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+1685649590526	geckodriver	INFO	Listening on 127.0.0.1:56799
+1685649591038	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "56800" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/fc/zdh1r5qj07l_90cmz0f5b29r0000gn/T/rust_mozprofile4swiBL"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1685649591330	Marionette	INFO	Marionette enabled
+1685649591467	Marionette	INFO	Listening on port 56805
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:56800
+Read port: 56805
+1685649591618	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+[ERROR glean_core] Error setting metrics feature config: Json(Error("EOF while parsing a value", line: 1, column: 0))
+DevTools listening on ws://127.0.0.1:56800/devtools/browser/846b9465-bacf-4f93-ad1b-57d5b07f9263
+JavaScript warning: https://www.googletagmanager.com/gtm.js?id=GTM-P528B3&gtm_auth=tfAzqo1rYDLgYhmTnSjPqw&gtm_preview=env-130&gtm_cookies_win=x, line 1: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtm.js?id=GTM-P528B3&gtm_auth=tfAzqo1rYDLgYhmTnSjPqw&gtm_preview=env-130&gtm_cookies_win=x, line 1: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtm.js?id=GTM-P528B3&gtm_auth=tfAzqo1rYDLgYhmTnSjPqw&gtm_preview=env-130&gtm_cookies_win=x, line 1: unreachable code after return statement
+JavaScript warning: https://pagead2.googlesyndication.com/bg/WucCaKvgDQ9fmljOI_WvgP1fjZ6LWmR4VZAfUyHL0jo.js line 2 > eval line 6053 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://95b9575cbae16614f6206f784228436e.safeframe.googlesyndication.com/safeframe/1-0-40/html/container.html, line 604: SyntaxError: expected expression, got ','
+1685649616358	Marionette	INFO	Stopped listening on port 56805
+[Child 65454, Main Thread] WARNING: JSWindowActorChild::SendRawMessage (Conduits, ConduitClosed) not sent: !CanSend() || !mManager || !mManager->CanSend(): file /builds/worker/checkouts/gecko/dom/ipc/jsactor/JSWindowActorChild.cpp:57
+[Child 65454, Main Thread] WARNING: JSWindowActorChild::SendRawMessage (Conduits, ConduitClosed) not sent: !CanSend() || !mManager || !mManager->CanSend(): file /builds/worker/checkouts/gecko/dom/ipc/jsactor/JSWindowActorChild.cpp:57
+[Child 65454, Main Thread] WARNING: JSWindowActorChild::SendRawMessage (Conduits, ConduitClosed) not sent: !CanSend() || !mManager || !mManager->CanSend(): file /builds/worker/checkouts/gecko/dom/ipc/jsactor/JSWindowActorChild.cpp:57
+[Child 65454, Main Thread] WARNING: JSWindowActorChild::SendRawMessage (Conduits, ConduitClosed) not sent: !CanSend() || !mManager || !mManager->CanSend(): file /builds/worker/checkouts/gecko/dom/ipc/jsactor/JSWindowActorChild.cpp:57
+[Child 65454, Main Thread] WARNING: JSWindowActorChild::SendRawMessage (Conduits, ConduitClosed) not sent: !CanSend() || !mManager || !mManager->CanSend(): file /builds/worker/checkouts/gecko/dom/ipc/jsactor/JSWindowActorChild.cpp:57
+[Child 65454, Main Thread] WARNING: JSWindowActorChild::SendRawMessage (Conduits, ConduitClosed) not sent: !CanSend() || !mManager || !mManager->CanSend(): file /builds/worker/checkouts/gecko/dom/ipc/jsactor/JSWindowActorChild.cpp:57
+[Child 65454, Main Thread] WARNING: JSWindowActorChild::SendRawMessage (Conduits, ConduitClosed) not sent: !CanSend() || !mManager || !mManager->CanSend(): file /builds/worker/checkouts/gecko/dom/ipc/jsactor/JSWindowActorChild.cpp:57
+[Child 65454, Main Thread] WARNING: JSWindowActorChild::SendRawMessage (Conduits, ConduitClosed) not sent: !CanSend() || !mManager || !mManager->CanSend(): file /builds/worker/checkouts/gecko/dom/ipc/jsactor/JSWindowActorChild.cpp:57
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+1685649622468	geckodriver	INFO	Listening on 127.0.0.1:56876
+1685649622987	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "56877" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/fc/zdh1r5qj07l_90cmz0f5b29r0000gn/T/rust_mozprofileYJ6Io7"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1685649623279	Marionette	INFO	Marionette enabled
+1685649623414	Marionette	INFO	Listening on port 56882
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:56877
+Read port: 56882
+1685649623550	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+[ERROR glean_core] Error setting metrics feature config: Json(Error("EOF while parsing a value", line: 1, column: 0))
+DevTools listening on ws://127.0.0.1:56877/devtools/browser/fc6cf13d-cc77-4e7a-a7af-9648f65003b1
+JavaScript warning: https://www.googletagmanager.com/gtm.js?id=GTM-P528B3&gtm_auth=tfAzqo1rYDLgYhmTnSjPqw&gtm_preview=env-130&gtm_cookies_win=x, line 1: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtm.js?id=GTM-P528B3&gtm_auth=tfAzqo1rYDLgYhmTnSjPqw&gtm_preview=env-130&gtm_cookies_win=x, line 1: unreachable code after return statement
+JavaScript warning: https://www.googletagmanager.com/gtm.js?id=GTM-P528B3&gtm_auth=tfAzqo1rYDLgYhmTnSjPqw&gtm_preview=env-130&gtm_cookies_win=x, line 1: unreachable code after return statement
+JavaScript warning: https://pagead2.googlesyndication.com/bg/WucCaKvgDQ9fmljOI_WvgP1fjZ6LWmR4VZAfUyHL0jo.js line 2 > eval line 3530 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript error: https://d3f3f62e9aa555bc2bc69c1b024c4f0a.safeframe.googlesyndication.com/safeframe/1-0-40/html/container.html, line 600: SyntaxError: expected expression, got ','
+1685649640121	Marionette	INFO	Stopped listening on port 56882
+[Child 65506, Main Thread] WARNING: JSWindowActorChild::SendRawMessage (Conduits, ConduitClosed) not sent: !CanSend() || !mManager || !mManager->CanSend(): file /builds/worker/checkouts/gecko/dom/ipc/jsactor/JSWindowActorChild.cpp:57
+[Child 65506, Main Thread] WARNING: JSWindowActorChild::SendRawMessage (Conduits, ConduitClosed) not sent: !CanSend() || !mManager || !mManager->CanSend(): file /builds/worker/checkouts/gecko/dom/ipc/jsactor/JSWindowActorChild.cpp:57
+[Child 65506, Main Thread] WARNING: JSWindowActorChild::SendRawMessage (Conduits, ConduitClosed) not sent: !CanSend() || !mManager || !mManager->CanSend(): file /builds/worker/checkouts/gecko/dom/ipc/jsactor/JSWindowActorChild.cpp:57
+[Child 65506, Main Thread] WARNING: JSWindowActorChild::SendRawMessage (Conduits, ConduitClosed) not sent: !CanSend() || !mManager || !mManager->CanSend(): file /builds/worker/checkouts/gecko/dom/ipc/jsactor/JSWindowActorChild.cpp:57
+[Child 65506, Main Thread] WARNING: JSWindowActorChild::SendRawMessage (Conduits, ConduitClosed) not sent: !CanSend() || !mManager || !mManager->CanSend(): file /builds/worker/checkouts/gecko/dom/ipc/jsactor/JSWindowActorChild.cpp:57
+[Child 65506, Main Thread] WARNING: JSWindowActorChild::SendRawMessage (Conduits, ConduitClosed) not sent: !CanSend() || !mManager || !mManager->CanSend(): file /builds/worker/checkouts/gecko/dom/ipc/jsactor/JSWindowActorChild.cpp:57
+[Child 65506, Main Thread] WARNING: JSWindowActorChild::SendRawMessage (Conduits, ConduitClosed) not sent: !CanSend() || !mManager || !mManager->CanSend(): file /builds/worker/checkouts/gecko/dom/ipc/jsactor/JSWindowActorChild.cpp:57
+[Child 65506, Main Thread] WARNING: JSWindowActorChild::SendRawMessage (Conduits, ConduitClosed) not sent: !CanSend() || !mManager || !mManager->CanSend(): file /builds/worker/checkouts/gecko/dom/ipc/jsactor/JSWindowActorChild.cpp:57
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+1686989926008	geckodriver	INFO	Listening on 127.0.0.1:52099
+1686989926487	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "52100" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/fc/zdh1r5qj07l_90cmz0f5b29r0000gn/T/rust_mozprofilef2RsUn"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1686989926856	Marionette	INFO	Marionette enabled
+1686989926906	Marionette	INFO	Listening on port 52107
+Read port: 52107
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:52100
+1686989926979	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+DevTools listening on ws://127.0.0.1:52100/devtools/browser/cadcc74b-c384-4720-b4f2-952326b18a91
+1686989959804	Marionette	INFO	Stopped listening on port 52107
+1687087653150	geckodriver	INFO	Listening on 127.0.0.1:52713
+1687087653676	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "52714" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/fc/zdh1r5qj07l_90cmz0f5b29r0000gn/T/rust_mozprofile0Z1rv0"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1687087653990	Marionette	INFO	Marionette enabled
+1687087654047	Marionette	INFO	Listening on port 52721
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 52721
+WebDriver BiDi listening on ws://127.0.0.1:52714
+1687087654173	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+DevTools listening on ws://127.0.0.1:52714/devtools/browser/d5994342-4eab-4454-bfac-2c06a68958c7
+1687087666248	Marionette	INFO	Stopped listening on port 52721
+1687161025639	geckodriver	INFO	Listening on 127.0.0.1:53260
+1687161026162	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "53261" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/fc/zdh1r5qj07l_90cmz0f5b29r0000gn/T/rust_mozprofileX5PYXm"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1687161026560	Marionette	INFO	Marionette enabled
+1687161026614	Marionette	INFO	Listening on port 53268
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:53261
+Read port: 53268
+1687161026849	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+DevTools listening on ws://127.0.0.1:53261/devtools/browser/4940d855-ad00-431f-b18c-88803b8c2c97
+1687161053323	Marionette	INFO	Stopped listening on port 53268
+1687217972570	geckodriver	INFO	Listening on 127.0.0.1:54703
+1687217973054	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "54704" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/fc/zdh1r5qj07l_90cmz0f5b29r0000gn/T/rust_mozprofilem3NUiP"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1687217973476	Marionette	INFO	Marionette enabled
+1687217973612	Marionette	INFO	Listening on port 54711
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:54704
+Read port: 54711
+1687217973782	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+DevTools listening on ws://127.0.0.1:54704/devtools/browser/6840ebba-628d-432b-a58a-430f91b4cd38
+1687217985894	Marionette	INFO	Stopped listening on port 54711
+1687331531385	geckodriver	INFO	Listening on 127.0.0.1:57776
+1687331531899	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "57777" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/fc/zdh1r5qj07l_90cmz0f5b29r0000gn/T/rust_mozprofileTtmvR7"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1687331532246	Marionette	INFO	Marionette enabled
+1687331532304	Marionette	INFO	Listening on port 57784
+Read port: 57784
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:57777
+1687331532423	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+DevTools listening on ws://127.0.0.1:57777/devtools/browser/06fd819b-7de6-4d30-9f87-d80e1c52d0d5
+1687331547068	Marionette	INFO	Stopped listening on port 57784
+1687530204821	geckodriver	INFO	Listening on 127.0.0.1:50858
+1687530205340	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "50859" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/fc/zdh1r5qj07l_90cmz0f5b29r0000gn/T/rust_mozprofile4WhgEd"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1687530205750	Marionette	INFO	Marionette enabled
+1687530205809	Marionette	INFO	Listening on port 50866
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 50866
+WebDriver BiDi listening on ws://127.0.0.1:50859
+1687530205891	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+DevTools listening on ws://127.0.0.1:50859/devtools/browser/375fd8dd-419a-4ca3-970e-d4e9da9fe8e0
+1687530228319	Marionette	INFO	Stopped listening on port 50866
+1687564539595	geckodriver	INFO	Listening on 127.0.0.1:52324
+1687564540115	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "52325" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/fc/zdh1r5qj07l_90cmz0f5b29r0000gn/T/rust_mozprofileJeWiyY"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1687564540526	Marionette	INFO	Marionette enabled
+1687564540584	Marionette	INFO	Listening on port 52332
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 52332
+WebDriver BiDi listening on ws://127.0.0.1:52325
+1687564540660	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+DevTools listening on ws://127.0.0.1:52325/devtools/browser/efdbba13-d9d4-43c1-8d16-951a1945b460
+1687564552979	Marionette	INFO	Stopped listening on port 52332
+1687565782119	geckodriver	INFO	Listening on 127.0.0.1:52423
+1687565782638	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "52424" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/fc/zdh1r5qj07l_90cmz0f5b29r0000gn/T/rust_mozprofileZcMHS9"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1687565782908	Marionette	INFO	Marionette enabled
+1687565783040	Marionette	INFO	Listening on port 52431
+Read port: 52431
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:52424
+1687565783091	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+DevTools listening on ws://127.0.0.1:52424/devtools/browser/a8a7bf88-4bee-40e8-9e8d-a84e2e2221dc
+1687565795288	Marionette	INFO	Stopped listening on port 52431
+1688166465940	geckodriver	INFO	Listening on 127.0.0.1:58633
+1688166466413	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "58634" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/fc/zdh1r5qj07l_90cmz0f5b29r0000gn/T/rust_mozprofileF0dAnq"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1688166466887	Marionette	INFO	Marionette enabled
+1688166466947	Marionette	INFO	Listening on port 58639
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 58639
+WebDriver BiDi listening on ws://127.0.0.1:58634
+1688166467078	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+DevTools listening on ws://127.0.0.1:58634/devtools/browser/d7abe740-e08e-4bff-b96c-09a34307e44b
+1688166477684	Marionette	INFO	Stopped listening on port 58639
+1688340960511	geckodriver	INFO	Listening on 127.0.0.1:50379
+1688340960981	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "50380" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/fc/zdh1r5qj07l_90cmz0f5b29r0000gn/T/rust_mozprofileoN9ygs"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1688340961469	Marionette	INFO	Marionette enabled
+1688340961527	Marionette	INFO	Listening on port 50387
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:50380
+Read port: 50387
+1688340961699	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+DevTools listening on ws://127.0.0.1:50380/devtools/browser/9042cde0-d8e4-4785-800f-34b3e79b57cb
+1688340980118	Marionette	INFO	Stopped listening on port 50387
+1688489064607	geckodriver	INFO	Listening on 127.0.0.1:53578
+1688489065115	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "53579" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/fc/zdh1r5qj07l_90cmz0f5b29r0000gn/T/rust_mozprofilexwbXIe"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1688489065519	Marionette	INFO	Marionette enabled
+1688489065654	Marionette	INFO	Listening on port 53586
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:53579
+Read port: 53586
+1688489065836	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+DevTools listening on ws://127.0.0.1:53579/devtools/browser/402f3a2d-ba36-4457-bf99-c8a1bf7bb768
+1688489088457	Marionette	INFO	Stopped listening on port 53586
+1688724482254	geckodriver	INFO	Listening on 127.0.0.1:60411
+1688724482764	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "60412" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/fc/zdh1r5qj07l_90cmz0f5b29r0000gn/T/rust_mozprofilelBA6Hf"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1688724483135	Marionette	INFO	Marionette enabled
+1688724483266	Marionette	INFO	Listening on port 60419
+Read port: 60419
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:60412
+1688724483327	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+DevTools listening on ws://127.0.0.1:60412/devtools/browser/bc0fc62a-451d-4e42-865e-1addf2429348
+1688724501947	Marionette	INFO	Stopped listening on port 60419
+1688724707073	geckodriver	INFO	Listening on 127.0.0.1:60464
+1688724707587	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "60465" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/fc/zdh1r5qj07l_90cmz0f5b29r0000gn/T/rust_mozprofilelmA6KU"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1688724707861	Marionette	INFO	Marionette enabled
+1688724707909	Marionette	INFO	Listening on port 60470
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:60465
+Read port: 60470
+1688724708067	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+DevTools listening on ws://127.0.0.1:60465/devtools/browser/e4933269-d128-489d-9598-62a5606781b3
+1688724718167	Marionette	INFO	Stopped listening on port 60470
+1688724751152	geckodriver	INFO	Listening on 127.0.0.1:60542
+1688724751157	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "60543" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/fc/zdh1r5qj07l_90cmz0f5b29r0000gn/T/rust_mozprofileeM6akX"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1688724751471	Marionette	INFO	Marionette enabled
+1688724751604	Marionette	INFO	Listening on port 60547
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:60543
+Read port: 60547
+1688724751749	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+DevTools listening on ws://127.0.0.1:60543/devtools/browser/f79d9219-f8c5-4883-aa50-400508de1304
+1688724931427	geckodriver	INFO	Listening on 127.0.0.1:60602
+1688724931944	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "60603" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/fc/zdh1r5qj07l_90cmz0f5b29r0000gn/T/rust_mozprofileOFWFNa"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1688724932203	Marionette	INFO	Marionette enabled
+1688724932258	Marionette	INFO	Listening on port 60608
+Read port: 60608
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:60603
+1688724932376	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+DevTools listening on ws://127.0.0.1:60603/devtools/browser/36eef3bd-199f-4d30-add3-6d69a644e472
+1688724942457	Marionette	INFO	Stopped listening on port 60608
+1688902915042	geckodriver	INFO	Listening on 127.0.0.1:63700
+1688902915560	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "63701" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/fc/zdh1r5qj07l_90cmz0f5b29r0000gn/T/rust_mozprofileCbnenI"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1688902915982	Marionette	INFO	Marionette enabled
+1688902916039	Marionette	INFO	Listening on port 63706
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 63706
+WebDriver BiDi listening on ws://127.0.0.1:63701
+1688902916113	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+DevTools listening on ws://127.0.0.1:63701/devtools/browser/9e8e3008-5ae2-4fd9-8360-193bf041904c
+1688902930491	Marionette	INFO	Stopped listening on port 63706
+1689600729914	geckodriver	INFO	Listening on 127.0.0.1:59054
+1689600730385	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "59055" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/fc/zdh1r5qj07l_90cmz0f5b29r0000gn/T/rust_mozprofileUllgZ0"
+2023-07-17 14:32:15.980 firefox-bin[58457:2009949] Unable to install helper!
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1689600736269	Marionette	INFO	Marionette enabled
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+1689600736382	Marionette	INFO	Listening on port 59067
+WebDriver BiDi listening on ws://127.0.0.1:59055
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+DevTools listening on ws://127.0.0.1:59055/devtools/browser/79317d21-d375-40bd-9b06-7141c7459e9c
+1689600740039	Marionette	INFO	Stopped listening on port 59067
+1689600741465	geckodriver	INFO	Listening on 127.0.0.1:59089
+1689600741982	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "59090" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/fc/zdh1r5qj07l_90cmz0f5b29r0000gn/T/rust_mozprofilewe349H"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1689600742252	Marionette	INFO	Marionette enabled
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+1689600742340	Marionette	INFO	Listening on port 59097
+Read port: 59097
+WebDriver BiDi listening on ws://127.0.0.1:59090
+1689600742432	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+UNSUPPORTED (log once): POSSIBLE ISSUE: unit 1 GLD_TEXTURE_INDEX_2D is unloadable and bound to sampler type (Float) - using zero texture because texture unloadable
+DevTools listening on ws://127.0.0.1:59090/devtools/browser/911ea0e7-7bb2-441c-b200-0eb707f397df
+1689600760635	Marionette	INFO	Stopped listening on port 59097

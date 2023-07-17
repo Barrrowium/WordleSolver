@@ -15,9 +15,9 @@ class WordleSolver():
 
     def __init__(self):
         self.options = Options()
-        self.options.add_argument('--headless')
-        self.options.add_argument('--disable-gpu')
-        self.driver = webdriver.Firefox(options=self.options, service=FirefoxService(GeckoDriverManager().install(), log_path=os.devnull))
+        #self.options.add_argument('--headless')
+        #self.options.add_argument('--disable-gpu')
+        self.driver = webdriver.Firefox(options=self.options, log_path=os.devnull)
         self.first_tile_characters = list(string.ascii_lowercase)
         self.second_tile_characters = list(string.ascii_lowercase)
         self.third_tile_characters = list(string.ascii_lowercase)
@@ -264,3 +264,4 @@ class WordleSolver():
 
 ws=WordleSolver()
 ws.solve()
+

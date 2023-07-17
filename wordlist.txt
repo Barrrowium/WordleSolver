@@ -837,7 +837,6 @@ bakal
 baked
 baken
 baker
-bakie
 balai
 Balak
 Balan
@@ -1513,7 +1512,6 @@ byous
 Byron
 bysen
 byway
-caama
 cabal
 caban
 cabas
@@ -1525,7 +1523,6 @@ cabio
 cable
 cabob
 cabot
-cacam
 Cacan
 cacao
 cache
@@ -1544,12 +1541,10 @@ cadre
 cadua
 cadus
 caeca
-caffa
 cafiz
 caged
 cager
 cagey
-caggy
 cagit
 cahiz
 cahot
@@ -1561,7 +1556,6 @@ Caite
 Cajan
 Cajun
 cajun
-caker
 cakey
 Calas
 Caleb
@@ -1804,7 +1798,6 @@ chlor
 choca
 chock
 Choco
-choel
 Choes
 choga
 choil
@@ -1944,7 +1937,6 @@ clump
 clung
 clunk
 Clyde
-clyer
 clype
 cnida
 coach
@@ -1977,7 +1969,6 @@ Cohen
 cohol
 coign
 coiny
-coker
 Colan
 colic
 Colin
@@ -2438,7 +2429,6 @@ dheri
 dhobi
 dhole
 dhoni
-dhoon
 dhoti
 dhoul
 dhyal
@@ -2554,7 +2544,7 @@ Donna
 donna
 Donne
 donor
-donum
+donut
 dooja
 dooli
 dooly
@@ -2631,7 +2621,6 @@ drink
 drinn
 drisk
 drive
-drogh
 droit
 droll
 drome
@@ -2976,7 +2965,6 @@ faced
 facer
 facet
 facia
-facks
 facty
 faddy
 faded
@@ -3414,7 +3402,6 @@ Ganga
 ganga
 gange
 ganja
-gansy
 ganta
 ganza
 gaper
@@ -3855,7 +3842,6 @@ Hakea
 hakim
 Hakka
 halal
-halch
 haler
 halma
 Haloa
@@ -3988,7 +3974,6 @@ hexer
 hexis
 hexyl
 hiant
-hiate
 hided
 hider
 hield
@@ -4369,7 +4354,6 @@ Japyx
 Jared
 Jarmo
 jarra
-jarry
 jasey
 Jason
 jatha
@@ -4510,7 +4494,6 @@ Kajar
 Kakan
 kakar
 kakke
-kalon
 kamao
 kamas
 Kamba
@@ -4531,7 +4514,6 @@ kappe
 kapur
 kaput
 karbi
-karch
 Karel
 Karen
 karma
