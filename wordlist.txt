@@ -1994,7 +1994,6 @@ Comus
 conal
 conch
 coned
-coner
 cones
 conga
 Congo

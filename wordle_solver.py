@@ -39,7 +39,8 @@ class WordleSolver():
             'close_tutorial': 'Modal-module_closeIcon__TcEKb',
             'tiles': 'Tile-module_tile__UWEHN',
             'menu_buttons': 'Welcome-module_button__ZG0Zh',
-            'gdpr_consent': 'pz-gdpr-btn-reject'
+            'gdpr_consent': 'pz-gdpr-btn-reject',
+            'tees_and_sees_button': '.purr-blocker-card__button'
         }
     
     def prepare_game_page(self):
@@ -49,6 +50,7 @@ class WordleSolver():
         b.get('https://nytimes.com/games/wordle/index.html')
 
         # Clear GDPR consent tracker settings
+        b.find_element(By.CSS_SELECTOR, self.selectors['tees_and_sees_button']).click()
         b.find_element(By.ID, self.selectors['gdpr_consent']).click()
 
         # click menu buttons
