@@ -7,7 +7,8 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.firefox.options import Options
-
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
 
 
 class WordleSolver():
@@ -50,6 +51,7 @@ class WordleSolver():
         b.get('https://nytimes.com/games/wordle/index.html')
 
         # Clear GDPR consent tracker settings
+        WebDriverWait(b, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, self.selectors['tees_and_sees_button'])))
         b.find_element(By.CSS_SELECTOR, self.selectors['tees_and_sees_button']).click()
         b.find_element(By.ID, self.selectors['gdpr_consent']).click()
 
