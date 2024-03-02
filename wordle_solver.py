@@ -5,6 +5,7 @@ import string
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support import expected_conditions as EC
@@ -15,9 +16,9 @@ class WordleSolver():
 
     def __init__(self):
         self.options = Options()
-        self.options.add_argument('--headless')
+        #self.options.add_argument('--headless')
         self.options.add_argument('--disable-gpu')
-        self.driver = webdriver.Firefox(options=self.options, log_path=os.devnull)
+        self.driver = webdriver.Firefox(options=self.options)
         self.first_tile_characters = list(string.ascii_lowercase)
         self.second_tile_characters = list(string.ascii_lowercase)
         self.third_tile_characters = list(string.ascii_lowercase)
@@ -51,9 +52,20 @@ class WordleSolver():
         b.get('https://nytimes.com/games/wordle/index.html')
 
         # Clear GDPR consent tracker settings
-        WebDriverWait(b, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, self.selectors['tees_and_sees_button'])))
-        b.find_element(By.CSS_SELECTOR, self.selectors['tees_and_sees_button']).click()
-        b.find_element(By.ID, self.selectors['gdpr_consent']).click()
+        try:
+            WebDriverWait(b, 2).until(EC.presence_of_element_located((By.CSS_SELECTOR, self.selectors['tees_and_sees_button'])))
+        except TimeoutException:
+            pass
+        else:
+            b.find_element(By.CSS_SELECTOR, self.selectors['tees_and_sees_button']).click()
+
+        # Now check for the intermitent GDPR browser button
+        try:
+            WebDriverWait(b,2).until(EC.presence_of_element_located((By.ID, self.selectors['gdpr_consent'])))
+        except TimeoutException:
+            pass
+        else:
+            b.find_element(By.ID, self.selectors['gdpr_consent'])
 
         # click menu buttons
         menu_buttons = b.find_elements(By.CLASS_NAME, self.selectors['menu_buttons'])
@@ -109,6 +121,7 @@ class WordleSolver():
     def process_correct_guesses(self, v):
         """logic for processing the charactes in the correct list
         param v: the value from iterating over the passed dict"""
+        starting_letters = self.confirmed_letters[:]
         for info in v:
             target_list = self.letter_lists[info['iteration']]
             if info['letter'] not in self.confirmed_letters:
@@ -118,9 +131,11 @@ class WordleSolver():
                     for char in remove_chars:
                         if char in target_list:
                             target_list.remove(char)
+        self.prepare_new_letter_information(starting_letters, "correct")
 
     def process_present_guesses(self, v):
-        """Logic for processign present letters""" 
+        """Logic for processign present letters"""
+        starting_letters = self.required_letters[:]
         for info in v:
             target_list = self.letter_lists[info['iteration']]
             try:
@@ -130,10 +145,12 @@ class WordleSolver():
             else:
                 if info['letter'] not in self.required_letters:
                     self.required_letters.append(info['letter'])
-
+        self.prepare_new_letter_information(starting_letters, "present")
+                    
     def process_absent_guesses(self, v):
         """"Logic for processign absent letters
         param v: the value of the list in the iteration"""
+        starting_letters = self.dead_letters[:]
         for info in v:
             if (info['letter'] not in self.required_letters 
             and info['letter'] not in self.dead_letters 
@@ -150,8 +167,23 @@ class WordleSolver():
                     if len(ll) !=1:
                         with contextlib.suppress(ValueError):
                             ll.remove(info['letter'])
+        self.prepare_new_letter_information(starting_letters, "dead")
 
-                
+    def prepare_new_letter_information(self, starting_letters, list_to_check):
+        """Polls the correct list to see which letters are new
+        param list: string - name of the list to be polled"""
+        new_letters = []
+        lists = {
+            "correct": self.confirmed_letters,
+            "present": self.required_letters,
+            "dead": self.dead_letters
+        }
+        for letter in lists[list_to_check]:
+            if letter not in starting_letters:
+                new_letters.append(letter)
+        if len(new_letters) > 0:
+            print(f"Added {new_letters} to {list_to_check} list.")
+
     def build_guess_list(self):
         """Take the word list and remove words that dont meet the criteria"""
         words_to_remove = []

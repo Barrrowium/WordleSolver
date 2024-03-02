@@ -66,7 +66,6 @@ acerb
 achar
 Achen
 acher
-achor
 acier
 acker
 ackey
@@ -959,15 +958,12 @@ beaux
 bebar
 bebat
 bebay
-bebed
 bebop
 becap
 Becky
-becut
 bedad
 beday
 bedel
-beden
 bedew
 bedim
 bedin
@@ -1115,7 +1111,6 @@ bijou
 Bikol
 bilbo
 bilby
-bilch
 bilge
 bilgy
 bilic
@@ -2844,7 +2839,6 @@ ennui
 Enoch
 enoil
 enorm
-enray
 enrib
 enrol
 enrut
@@ -5705,7 +5699,6 @@ nabak
 Nabal
 Nabby
 nabla
-nable
 nabob
 nacre
 nacry
