@@ -16,7 +16,7 @@ class WordleSolver():
 
     def __init__(self):
         self.options = Options()
-        self.options.add_argument('--headless')
+        #self.options.add_argument('--headless')
         self.options.add_argument('--disable-gpu')
         self.driver = webdriver.Firefox(options=self.options)
         self.first_tile_characters = list(string.ascii_lowercase)
